@@ -3,10 +3,10 @@
     const staticSprite = document.getElementById('ironman-static');
 
     function initSprites() {
-        staticSprite.style.top = '720px';
-        staticSprite.style.left = '315px';
-        activeSprite.style.top = '720px';
-        activeSprite.style.left = '315px';
+        staticSprite.style.top = '104px';
+        staticSprite.style.left = '800px';
+        activeSprite.style.top = '104px';
+        activeSprite.style.left = '800px';
         staticSprite.style.display = 'block';
     }
 
@@ -14,7 +14,7 @@
         staticSprite.style.display = 'none';
         activeSprite.style.display = 'block';
 
-        travel({ x: 800, y: 104});
+        travel({ x: 315, y: 720});
     }
 
     function getDistance(point1, point2) {
@@ -37,14 +37,12 @@
 
         const ticker = setInterval(() => {
             if (currentStep === stepCount) {
-                console.log('Last step');
                 clearInterval(ticker);
                 activeSprite.style.top = `${destination.y}px`;
                 activeSprite.style.left = `${destination.x}px`;
             } else {
                 pos.x += xStep;
                 pos.y += yStep;
-                console.log(pos);
                 activeSprite.style.top = `${Math.round(pos.y)}px`;
                 activeSprite.style.left = `${Math.round(pos.x)}px`;
                 currentStep++;
