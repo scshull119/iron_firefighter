@@ -1,5 +1,5 @@
-var waters = [ {x:0, y:0}, {x:0, y:4} ]
-var fires  = [ {x:2, y:3, isOut: false} , {x:1, y:3, isOut: false}, {x:9, y:9, isOut: false} ]
+var waters = [ {x:315, y:720} ]
+var fires  = [ {x:300, y:115, isOut: false}, {x:210, y:250, isOut: false}, {x:800, y:780, isOut: false} ]
 
 function getActiveFires(){
     activeFiresArray = []
@@ -46,25 +46,21 @@ function shortestDistanceToFire(ironMan){
     return shortestDistance
 }
 ironMan = waters[0]
-console.log('Iron Man starts at', ironMan)
+console.log('Iron Man starts at WATER at', ironMan)
 
 var activeFires = getActiveFires()
-for (let i = 0; i < activeFires.length-1; i++) {
+for (let i = 0; i < activeFires.length; i++) {
     closestFireLocationIndex = shortestDistanceToFire(ironMan)['index']
     closestFireLocation = fires[closestFireLocationIndex]
     ironMan = closestFireLocation
     fires[closestFireLocationIndex].isOut = true
     console.log('Iron Man puts out FIRE at', ironMan)
-    closestFireLocationIndex = shortestDistanceToWater(ironMan)['index']
-    closestFireLocation = waters[closestFireLocationIndex]
-    ironMan = closestFireLocation
-    fires[closestFireLocationIndex].isOut = true
-    console.log('Iron Man gets WATER at', ironMan)
+    if (i < activeFires.length - 1) {
+        closestWaterLocationIndex = shortestDistanceToWater(ironMan)['index']
+        closestWaterLocation = waters[closestWaterLocationIndex]
+        ironMan = closestWaterLocation
+        console.log('Iron Man gets WATER at', ironMan)
+    }
 }
 
-closestFireLocationIndex = shortestDistanceToFire(ironMan).index
-closestFireLocation = fires[closestFireLocationIndex]
-ironMan =closestFireLocation
-fires[closestFireLocationIndex].isOut = true
-console.log('Iron Man puts out FIRE at', ironMan)
 console.log('Iron Man puts out all the fires. Yay!')
