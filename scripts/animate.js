@@ -51,6 +51,8 @@ const animator  = (function () {
                     clearInterval(ticker);
                     activeSprite.style.top = `${destination.y}px`;
                     activeSprite.style.left = `${destination.x}px`;
+                    staticSprite.style.top = `${destination.y}px`;
+                    staticSprite.style.left = `${destination.x}px`;
                     resolve(destination);
                 } else {
                     pos.x += xStep;
