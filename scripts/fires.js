@@ -19,7 +19,7 @@ function initFires(){
     });
 }
 
-function putOutFire(xLoc, yLoc) {
+function putOutFire({ x: xLoc, y: yLoc}) {
     fires.forEach((fire, idx) => {
         if (fire.x === xLoc && fire.y === yLoc) {
             fireElements[idx].style.display = 'none';

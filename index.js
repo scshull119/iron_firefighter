@@ -57,6 +57,7 @@ async function run() {
         closestFireLocation = fires[closestFireLocationIndex]
         ironMan = closestFireLocation
         await animator.travel(ironMan);
+        putOutFire(ironMan);
         await animator.hold(1000);
         fires[closestFireLocationIndex].isOut = true
         console.log('Iron Man puts out FIRE at', ironMan)
