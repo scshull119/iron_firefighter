@@ -45,22 +45,33 @@ function shortestDistanceToFire(ironMan){
    }
     return shortestDistance
 }
-ironMan = waters[0]
-console.log('Iron Man starts at WATER at', ironMan)
 
-var activeFires = getActiveFires()
-for (let i = 0; i < activeFires.length; i++) {
-    closestFireLocationIndex = shortestDistanceToFire(ironMan)['index']
-    closestFireLocation = fires[closestFireLocationIndex]
-    ironMan = closestFireLocation
-    fires[closestFireLocationIndex].isOut = true
-    console.log('Iron Man puts out FIRE at', ironMan)
-    if (i < activeFires.length - 1) {
-        closestWaterLocationIndex = shortestDistanceToWater(ironMan)['index']
-        closestWaterLocation = waters[closestWaterLocationIndex]
-        ironMan = closestWaterLocation
-        console.log('Iron Man gets WATER at', ironMan)
+async function run() {
+    ironMan = waters[0]
+    console.log('Iron Man starts at WATER at', ironMan)
+    animator.initSprites(ironMan);
+    await animator.hold(2000);
+    animator.takeOff();
+    var activeFires = getActiveFires()
+    for (let i = 0; i < activeFires.length; i++) {
+        closestFireLocationIndex = shortestDistanceToFire(ironMan)['index']
+        closestFireLocation = fires[closestFireLocationIndex]
+        ironMan = closestFireLocation
+        await animator.travel(ironMan);
+        await animator.hold(1000);
+        fires[closestFireLocationIndex].isOut = true
+        console.log('Iron Man puts out FIRE at', ironMan)
+        if (i < activeFires.length - 1) {
+            closestWaterLocationIndex = shortestDistanceToWater(ironMan)['index']
+            closestWaterLocation = waters[closestWaterLocationIndex]
+            ironMan = closestWaterLocation
+            await animator.travel(ironMan);
+            await animator.hold(1000);
+            console.log('Iron Man gets WATER at', ironMan)
+        }
     }
+
+    console.log('Iron Man puts out all the fires. Yay!')
 }
 
-console.log('Iron Man puts out all the fires. Yay!')
+run();
