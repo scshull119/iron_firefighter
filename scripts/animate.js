@@ -17,6 +17,8 @@ const animator  = (function () {
     function initSprites(initialPos) {
         staticSprite.style.top = `${initialPos.y}px`;
         staticSprite.style.left = `${initialPos.x}px`;
+        staticSprite.style.height = '50px';
+        activeSprite.style.height = '50px';
         activeSprite.style.top = `${initialPos.y}px`;
         activeSprite.style.left = `${initialPos.x}px`;
         staticSprite.style.display = 'block';
@@ -66,6 +68,25 @@ const animator  = (function () {
         });
     }
 
+    function overAndOut() {
+        return new Promise((resolve, reject) => {
+            if (!isAirborne) {
+                reject('Must be airborne to land in Vegas');
+            }
+            const shrinker = setInterval(() => {
+                let elSize = parseInt(activeSprite.style.height);
+                elSize -= 10;
+                if (elSize <= 0) {
+                    activeSprite.style.display = 'none';
+                    clearInterval(shrinker);
+                    resolve('Vacation!!!');
+                } else {
+                    activeSprite.style.height = `${elSize}px`;
+                }
+            }, 100);
+        });
+    }
+
     function hold(duration) {
         return new Promise((resolve) => {
             setTimeout(() => {
@@ -80,5 +101,6 @@ const animator  = (function () {
         touchDown,
         travel,
         hold,
+        overAndOut
     }
 })();
