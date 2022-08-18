@@ -3,10 +3,10 @@
     const staticSprite = document.getElementById('ironman-static');
 
     function initSprites() {
-        staticSprite.style.top = '104px';
-        staticSprite.style.left = '800px';
-        activeSprite.style.top = '104px';
-        activeSprite.style.left = '800px';
+        staticSprite.style.top = '720px';
+        staticSprite.style.left = '315px';
+        activeSprite.style.top = '720px';
+        activeSprite.style.left = '315px';
         staticSprite.style.display = 'block';
     }
 
@@ -14,7 +14,7 @@
         staticSprite.style.display = 'none';
         activeSprite.style.display = 'block';
 
-        travel({ x: 315, y: 720});
+        travel({ x: 300, y: 115});
     }
 
     function getDistance(point1, point2) {
