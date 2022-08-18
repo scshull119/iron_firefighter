@@ -1,8 +1,11 @@
-const fires = [ {x:300, y:115, isOut: false}, {x:210, y:250, isOut: false}, {x:800, y:780, isOut: false} ]
-
-const fire1 = document.getElementById('fire1');
-const fire2 = document.getElementById('fire2');
-const fire3 = document.getElementById('fire3');
+const fires = [
+    {x:300, y:115, isOut: false},
+    {x:210, y:250, isOut: false},
+    {x:800, y:780, isOut: false},
+    {x:435, y:908, isOut: false},
+    {x:622, y:367, isOut: false},
+    {x:900, y:462, isOut: false},
+];
 
 const fireElements = [];
 

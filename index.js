@@ -1,4 +1,8 @@
-var waters = [ {x:315, y:720}, {x:100 ,y:250} ]
+var waters = [
+    {x:315, y:720},
+    {x:100 ,y:250},
+    {x: 586, y: 474}
+]
 
 function getActiveFires(){
     activeFiresArray = []
