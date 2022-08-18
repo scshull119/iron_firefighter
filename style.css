@@ -16,3 +16,9 @@ html, body {
     display: none;
     height: 50px;
 }
+
+.fire {
+    position: absolute;
+    display: none;
+    height: 50px;
+}
