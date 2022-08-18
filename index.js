@@ -72,7 +72,7 @@ async function run() {
     }
 
     console.log('Iron Man puts out all the fires. Yay!')
-    await animator.travel({ x: 1150, y: 900 });
+    await animator.travel({ x: 1160, y: 920 });
     await animator.overAndOut();
 }
 
