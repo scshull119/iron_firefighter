@@ -23,21 +23,3 @@ html, body {
     height: 50px;
 }
 
-#fire1  {
-    display: 'block';
-    top: 115px;
-    left: 300px;
-
-}
-
-#fire2 {
-    display: 'block';
-    top: 210px;
-    left: 250px;
-}
-
-#fire3 {
-    display: 'block';
-    top: 780px;
-    left: 800px;
-}

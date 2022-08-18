@@ -1,6 +1,7 @@
 const animator  = (function () {
     const activeSprite = document.getElementById('ironman-active');
     const staticSprite = document.getElementById('ironman-static');
+
     let isAirborne = false;
 
     function getDistance(point1, point2) {
@@ -53,6 +54,7 @@ const animator  = (function () {
                     activeSprite.style.left = `${destination.x}px`;
                     staticSprite.style.top = `${destination.y}px`;
                     staticSprite.style.left = `${destination.x}px`;
+                    putOutFire(destination.x,destination.y);
                     resolve(destination);
                 } else {
                     pos.x += xStep;
