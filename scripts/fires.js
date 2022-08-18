@@ -1,34 +1,49 @@
+const fires = [ {x:300, y:115, isOut: false}, {x:210, y:250, isOut: false}, {x:800, y:780, isOut: false} ]
+
 const fire1 = document.getElementById('fire1');
 const fire2 = document.getElementById('fire2');
 const fire3 = document.getElementById('fire3');
 
-    function initFires(){
-        fire1.style.top = '250px';
-        fire1.style.left = '210px';
-        fire1.style.display = 'block';
+const fireElements = [];
 
-        fire2.style.top = '115px';
-        fire2.style.left = '300px';
-        fire2.style.display = 'block';
+fires.forEach((fire, idx)=> {
+    fireEl = document.getElementById(`fire${idx + 1}`);
+    fireElements.push(fireEl);
+});
 
-        fire3.style.top = '780px';
-        fire3.style.left = '800px';
-        fire3.style.display = 'block';
+function initFires(){
+    fires.forEach((fire, idx) => {
+        fireElements[idx].style.top = `${fire.y}px`;
+        fireElements[idx].style.left = `${fire.x}px`;
+        fireElements[idx].style.display = 'block';
+        fireElements[idx].style.height = '100px';
+    });
+}
 
-    }
-
-    function putOutFire(xLoc, yLoc) {
-        const posFire1 = { x: parseInt(fire1.style.left), y: parseInt(fire1.style.top) };
-        const posFire2 = { x: parseInt(fire2.style.left), y: parseInt(fire2.style.top) };
-        const posFire3 = { x: parseInt(fire3.style.left), y: parseInt(fire3.style.top) };
-
-        if (posFire1.x == xLoc && posFire1.y == yLoc){
-            fire1.style.display = 'none';
-        } else if (posFire2.x == xLoc && posFire2.y == yLoc){
-            fire2.style.display = 'none';
-        } else if (posFire3.x == xLoc && posFire3.y == yLoc){
-            fire3.style.display = 'none';
+function putOutFire({ x: xLoc, y: yLoc}) {
+    return new Promise((resolve, reject) => {
+        let fireEl;
+        fires.forEach((fire, idx) => {
+            if (fire.x === xLoc && fire.y === yLoc) {
+                fireEl = fireElements[idx];
+            }
+        });
+        if (!fireEl) {
+            reject('No fire found at this location');
         }
+
+        const shrinker = setInterval(() => {
+            let elSize = parseInt(fireEl.style.height);
+            elSize -= 10;
+            if (elSize <= 0) {
+                fireEl.style.display = 'none';
+                clearInterval(shrinker);
+                resolve('Fire is out');
+            } else {
+                fireEl.style.height = `${elSize}px`;
+            }
+        }, 100);
+    });
 }
 
 initFires();

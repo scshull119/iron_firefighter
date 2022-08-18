@@ -54,7 +54,6 @@ const animator  = (function () {
                     activeSprite.style.left = `${destination.x}px`;
                     staticSprite.style.top = `${destination.y}px`;
                     staticSprite.style.left = `${destination.x}px`;
-                    putOutFire(destination.x,destination.y);
                     resolve(destination);
                 } else {
                     pos.x += xStep;

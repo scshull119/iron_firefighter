@@ -1,5 +1,4 @@
 var waters = [ {x:315, y:720}, {x:100 ,y:250} ]
-var fires  = [ {x:300, y:115, isOut: false}, {x:210, y:250, isOut: false}, {x:800, y:780, isOut: false} ]
 
 function getActiveFires(){
     activeFiresArray = []
@@ -58,6 +57,7 @@ async function run() {
         closestFireLocation = fires[closestFireLocationIndex]
         ironMan = closestFireLocation
         await animator.travel(ironMan);
+        await putOutFire(ironMan);
         await animator.hold(1000);
         fires[closestFireLocationIndex].isOut = true
         console.log('Iron Man puts out FIRE at', ironMan)
