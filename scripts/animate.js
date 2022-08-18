@@ -1,9 +1,6 @@
 (function () {
     const activeSprite = document.getElementById('ironman-active');
     const staticSprite = document.getElementById('ironman-static');
-    // const fireSprite1 = document.getElementById('fire1');
-    // const fireSprite2 = document.getElementById('fire2');
-    // const fireSprite3 = document.getElementById('fire3');
 
     function initSprites() {
         staticSprite.style.top = '720px';
@@ -11,19 +8,6 @@
         activeSprite.style.top = '720px';
         activeSprite.style.left = '315px';
         staticSprite.style.display = 'block';
-
-        // fireSprite1.style.top = '115px';
-        // fireSprite1.style.left = '300px';
-        // fireSprite1.style.display = 'block';
-
-        // fireSprite2.style.top = '210px';
-        // fireSprite2.style.left = '250px';
-        // fireSprite2.style.display = 'block';
-
-        // fireSprite3.style.top = '800px';
-        // fireSprite3.style.left = '780px';
-        // fireSprite3.style.display = 'block';
-
     }
 
     function animate() {
